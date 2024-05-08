@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD_app</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+            <div th:each="user : ${users}">
+                <span th:text="${user.getId()}">userID</span>
+                <h5 th:text="${user.getName()}">
+                    userName
+                </h5>
+                <span th:text="${user.getLastName()}">
+                    userLastName
+                </span>
+                <span th:text="${user.getAge()}">
+                    userAge
+                </span>
+                <a th:href="@{/{id}/update(id=${user.getId()})}" >update user</a>
+                <a th:href="@{/{id}/delete(id=${user.getId()})}">delete user</a>
+            </div>
+            <a th:href="@{/new}">create user</a>
+    </div>
+</body>
+</html>
